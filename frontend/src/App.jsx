@@ -25,7 +25,7 @@ const App = () => {
 
   const fetchItems = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/items');
+      const { data } = await axios.get('https://inventory-tracking-system-3emf.onrender.com/api/items');
       setItems(data.items);
       setStats({
         totalSales: data.totalSales,
@@ -39,7 +39,7 @@ const App = () => {
   
   const resetTotals = async () => {
     try {
-      await axios.post('http://localhost:5000/api/reset-totals');
+      await axios.post('https://inventory-tracking-system-3emf.onrender.com/api/reset-totals');
       setStats({
         totalSales: 0,
         totalProfit: 0,
@@ -58,7 +58,7 @@ const App = () => {
   };
 
   const addItem = async () => {
-    await axios.post('http://localhost:5000/api/items', form);
+    await axios.post('https://inventory-tracking-system-3emf.onrender.com/api/items', form);
     fetchItems();
     setForm({
       name: '',
@@ -79,7 +79,7 @@ const App = () => {
     }
   
     try {
-      await axios.put(`http://localhost:5000/api/items/${id}/sell`, {
+      await axios.put(`https://inventory-tracking-system-3emf.onrender.com/api/items/${id}/sell`, {
         sellQuantity: Number(sellQuantity),
         sellValue: Number(sellValue),
         buyerName: buyerName || null, // Optional
@@ -151,7 +151,7 @@ const exportToPDF = () => {
   
 
   const deleteItem = async (id) => {
-    await axios.delete(`http://localhost:5000/api/items/${id}`);
+    await axios.delete(`https://inventory-tracking-system-3emf.onrender.com/api/items/${id}`);
     fetchItems();
   };
 
